@@ -5,6 +5,7 @@ description = "A catalogue of Rust design patterns, anti-patterns and idioms"
 language = "en"
 multilingual = false
 src = "src"
+version = "0.0.1"
 
 [build]
 create-missing = false
@@ -33,3 +34,7 @@ level = 1
 editable = false
 
 # [output.linkcheck]  # enable the "mdbook-linkcheck" renderer, disabled due to gh-actions
+
+[output.epub]
+#cover-image = "img/book_cover.jpg"
+additional-resources = []
