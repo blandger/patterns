@@ -5,6 +5,7 @@ description = "A catalogue of Rust design patterns, anti-patterns and idioms"
 language = "en"
 multilingual = false
 src = "src"
+#version = "0.0.1"
 
 [build]
 create-missing = false
@@ -62,3 +63,7 @@ mainfontfallback = ["NotoSerifCJKSC:"]
 geometry = ["margin=1in"]
 linkcolor = "blue"
 urlcolor = "red"
+
+#[output.epub]
+#cover-image = "img/book_cover.jpg"
+#additional-resources = []
