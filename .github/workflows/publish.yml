@@ -40,7 +40,10 @@ jobs:
         uses: ./.github/workflows/install-mdbook
 
       - name: Build course in English
-        run: mdbook build -d book
+        run: |
+          mdbook build -d book
+          mv book/html/* book/pandoc/pdf/rust-design-patterns.pdf book/
+          rm -r book/html book/pandoc
 
       # TODO: Activate when first translation is available
       # - name: Build all translations
@@ -55,13 +58,13 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./book
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

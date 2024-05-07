@@ -36,10 +36,10 @@ fn three_vowels(word: &String) -> bool {
             'a' | 'e' | 'i' | 'o' | 'u' => {
                 vowel_count += 1;
                 if vowel_count >= 3 {
-                    return true
+                    return true;
                 }
             }
-            _ => vowel_count = 0
+            _ => vowel_count = 0,
         }
     }
     false
@@ -54,7 +54,6 @@ fn main() {
     // This works fine, but the following two lines would fail:
     // println!("Ferris: {}", three_vowels("Ferris"));
     // println!("Curious: {}", three_vowels("Curious"));
-
 }
 ```
 
@@ -97,10 +96,10 @@ fn three_vowels(word: &str) -> bool {
             'a' | 'e' | 'i' | 'o' | 'u' => {
                 vowel_count += 1;
                 if vowel_count >= 3 {
-                    return true
+                    return true;
                 }
             }
-            _ => vowel_count = 0
+            _ => vowel_count = 0,
         }
     }
     false
@@ -111,7 +110,7 @@ fn main() {
         "Once upon a time, there was a friendly curious crab named Ferris".to_string();
     for word in sentence_string.split(' ') {
         if three_vowels(word) {
-            println!("{} has three consecutive vowels!", word);
+            println!("{word} has three consecutive vowels!");
         }
     }
 }

@@ -4,7 +4,7 @@
 
 In foreign languages like C, errors are represented by return codes. However,
 Rust's type system allows much more rich error information to be captured and
-propogated through a full type.
+propagated through a full type.
 
 This best practice shows different kinds of error codes, and how to expose them
 in a usable way:
@@ -20,8 +20,8 @@ in a usable way:
 
 ```rust,ignore
 enum DatabaseError {
-    IsReadOnly = 1, // user attempted a write operation
-    IOError = 2, // user should read the C errno() for what it was
+    IsReadOnly = 1,    // user attempted a write operation
+    IOError = 2,       // user should read the C errno() for what it was
     FileCorrupted = 3, // user should run a repair tool to recover it
 }
 
@@ -57,10 +57,7 @@ pub mod c_api {
     use super::errors::DatabaseError;
 
     #[no_mangle]
-    pub extern "C" fn db_error_description(
-        e: *const DatabaseError
-        ) -> *mut libc::c_char {
-
+    pub extern "C" fn db_error_description(e: *const DatabaseError) -> *mut libc::c_char {
         let error: &DatabaseError = unsafe {
             // SAFETY: pointer lifetime is greater than the current stack frame
             &*e
@@ -71,7 +68,7 @@ pub mod c_api {
                 format!("cannot write to read-only database");
             }
             DatabaseError::IOError(e) => {
-                format!("I/O Error: {}", e);
+                format!("I/O Error: {e}");
             }
             DatabaseError::FileCorrupted(s) => {
                 format!("File corrupted, run repair: {}", &s);
@@ -107,17 +104,19 @@ pub mod c_api {
 struct ParseError {
     expected: char,
     line: u32,
-    ch: u16
+    ch: u16,
 }
 
-impl ParseError { /* ... */ }
+impl ParseError {
+    /* ... */
+}
 
 /* Create a second version which is exposed as a C structure */
 #[repr(C)]
 pub struct parse_error {
     pub expected: libc::c_char,
     pub line: u32,
-    pub ch: u16
+    pub ch: u16,
 }
 
 impl From<ParseError> for parse_error {
