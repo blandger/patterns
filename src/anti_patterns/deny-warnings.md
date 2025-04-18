@@ -54,7 +54,7 @@ Travis, but remember that this may break the build when something changes)
 without requiring a change to the code.
 
 Alternatively, we can specify the lints that we want to `deny` in the code. Here
-is a list of warning lints that is (hopefully) safe to deny (as of Rustc
+is a list of warning lints that is (hopefully) safe to deny (as of rustc
 1.48.0):
 
 ```rust,ignore
@@ -106,6 +106,6 @@ certain that there will be more deprecated APIs in the future.
   `rustc --help` for a general list of options
 - [rust-clippy] is a collection of lints for better Rust code
 
-[rust-clippy]: https://github.com/Manishearth/rust-clippy
+[rust-clippy]: https://github.com/rust-lang/rust-clippy
 [deprecate attribute]: https://doc.rust-lang.org/reference/attributes.html#deprecation
 [--cap-lints]: https://doc.rust-lang.org/rustc/lints/levels.html#capping-lints
